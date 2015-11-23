@@ -25,26 +25,25 @@ func main() {
 	filename := "test1.json"
 	jsondata, _ := fileReader(filename)
 
-	rootKey := "T"
 	searchKey := "tokyo"
-
 	fmt.Printf("\n 1. \n")
+	fmt.Printf("%v\n", jvmap.JsonValueMap(jsondata, searchKey)) // [[map[tokyo:[123 456]] map[tokyo:[abc def]] map[tokyo:foo]]]
+
+	rootKey := "T"
+	searchKey = "tokyo"
+
+	fmt.Printf("\n 2. \n")
 	fmt.Printf("%v\n", jvmap.JsonValueMap(jsondata, searchKey, rootKey)) // [[map[tokyo:[abc def]]]]
 
 	rootKey = "O"
 	searchKey = "tokyo"
 
-	fmt.Printf("\n 2. \n")
+	fmt.Printf("\n 3. \n")
 	fmt.Printf("%v\n", jvmap.JsonValueMap(jsondata, searchKey, rootKey)) // [[map[tokyo:[123 456]]]]
 
 	rootKey = "models"
 	searchKey = "tokyo"
 
-	fmt.Printf("\n 3. \n")
-	fmt.Printf("%v\n", jvmap.JsonValueMap(jsondata, searchKey, rootKey)) // [[map[tokyo:[123 456]] map[tokyo:[abc def]] map[tokyo:foo]]]
-
-	rootKey = ""
-	searchKey = "tokyo"
 	fmt.Printf("\n 4. \n")
 	fmt.Printf("%v\n", jvmap.JsonValueMap(jsondata, searchKey, rootKey)) // [[map[tokyo:[123 456]] map[tokyo:[abc def]] map[tokyo:foo]]]
 

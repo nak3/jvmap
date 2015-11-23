@@ -34,7 +34,7 @@ func jsonValueSearch(decoded map[string]interface{}, searchRoot string, valueLis
 func JsonValueMap(jsondata []byte, keys ...string) [][]map[string]interface{} {
 	searchKey := keys[0]
 	rootKey := searchKey
-	if keys[1] != "" {
+	if len(keys) >= 2 {
 		rootKey = keys[1]
 	}
 

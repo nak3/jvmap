@@ -2,8 +2,10 @@ package main
 
 import (
 	"../"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 )
 
@@ -23,7 +25,13 @@ func fileReader(filename string) ([]byte, error) {
 
 func main() {
 	filename := "test1.json"
-	jsondata, _ := fileReader(filename)
+	json_rawdata, _ := fileReader(filename)
+
+	jsondata := map[string]interface{}{}
+	err := json.Unmarshal(json_rawdata, &jsondata)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	searchKey := "tokyo"
 	fmt.Printf("\n 1. \n")
